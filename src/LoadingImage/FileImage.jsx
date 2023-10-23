@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { supabase } from '../supabaseClient'
+// import { supabase } from '../supabaseClient'
 
 // user
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
@@ -21,12 +21,13 @@ const FileImage = () => {
 		if (error) {
 			console.log('error communicaton with supabase, make sure to use a real email address', error)
 		} else {
-			console.log('check you email for a supabase mage link to ')
+			console.log('check you email for a supabase mage link to ', data)
 		}
 
 	}
 	async function signOut() {
 		const { error } = await supabase.auth.signOut();
+		console.log(error)
 	}
 
 
@@ -83,6 +84,7 @@ const FileImage = () => {
 		if (user) {
 			getImages()
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user])
 
 

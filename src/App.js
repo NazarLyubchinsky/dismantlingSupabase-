@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { BsFillTrashFill } from 'react-icons/bs';
-import { MdDoneOutline } from 'react-icons/md';
-import { FaStar } from 'react-icons/fa';
+// import React, { useState } from "react";
+// import { BsFillTrashFill } from 'react-icons/bs';
+// import { MdDoneOutline } from 'react-icons/md';
+// import { FaStar } from 'react-icons/fa';
 import './style.scss'
-import Vanta from "./Vanta";
-import { useEffect } from "react";
-import { supabase } from "./supabaseClient";
+// import Vanta from "./Vanta";
+// import { useEffect } from "react";
+// import { supabase } from "./supabaseClient";
 import FileImage from "./LoadingImage/FileImage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home/Home";
@@ -16,66 +16,66 @@ import Home from "./Home/Home";
 function App() {
 
 
-	function data(date) {
-		return new Intl.DateTimeFormat('en-En', {
-			day: '2-digit',
-			month: 'long',
-			year: 'numeric',
-		}).format(new Date(date))
-	}
+	// function data(date) {
+	// 	return new Intl.DateTimeFormat('en-En', {
+	// 		day: '2-digit',
+	// 		month: 'long',
+	// 		year: 'numeric',
+	// 	}).format(new Date(date))
+	// }
 
-	const [name, setName] = useState("")
-	const [description, setDescription] = useState("")
-	const [products, setProducts] = useState([])
-
-
-	useEffect(() => {
-		getProducts()
-	}, [])
-
-	async function getProducts() {
-		try {
-			const { data, error } = await supabase
-				.from("products")
-				.select("*")
-				.limit(10)
-			if (error) throw error;
-			if (data != null) {
-				setProducts(data);
-			}
-		} catch (error) {
-			alert(error.message)
-		}
-	}
+	// const [name, setName] = useState("")
+	// const [description, setDescription] = useState("")
+	// const [products, setProducts] = useState([])
 
 
-	async function createProduct() {
-		try {
-			const { data, error } = await supabase
-				.from("products")
-				.insert([
-					{
-						name: name,
-						description: description
-					}
-				])
-				.single()
-			console.log(data)
+	// useEffect(() => {
+	// 	getProducts()
+	// }, [])
 
-			if (error) throw error;
-			window.location.reload()
-		} catch (error) {
-			console.log(error.message)
-		}
-	}
+	// async function getProducts() {
+	// 	try {
+	// 		const { data, error } = await supabase
+	// 			.from("products")
+	// 			.select("*")
+	// 			.limit(10)
+	// 		if (error) throw error;
+	// 		if (data != null) {
+	// 			setProducts(data);
+	// 		}
+	// 	} catch (error) {
+	// 		alert(error.message)
+	// 	}
+	// }
 
-	const handleNameChange = (e) => {
-		setName(e.target.value);
-	}
 
-	const handleDescriptionChange = (e) => {
-		setDescription(e.target.value);
-	}
+	// async function createProduct() {
+	// 	try {
+	// 		const { data, error } = await supabase
+	// 			.from("products")
+	// 			.insert([
+	// 				{
+	// 					name: name,
+	// 					description: description
+	// 				}
+	// 			])
+	// 			.single()
+	// 		console.log(data)
+
+	// 		if (error) throw error;
+	// 		window.location.reload()
+	// 	} catch (error) {
+	// 		console.log(error.message)
+	// 	}
+	// }
+
+	// const handleNameChange = (e) => {
+	// 	setName(e.target.value);
+	// }
+
+	// const handleDescriptionChange = (e) => {
+	// 	setDescription(e.target.value);
+	// }
 
 
 
