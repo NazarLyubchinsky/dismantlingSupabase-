@@ -7,8 +7,9 @@ import './style.scss'
 // import { useEffect } from "react";
 // import { supabase } from "./supabaseClient";
 import FileImage from "./LoadingImage/FileImage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Home/Home";
+import EmailWall from './LoadingImage/EmailWall';
 
 
 
@@ -77,13 +78,17 @@ function App() {
 	// 	setDescription(e.target.value);
 	// }
 
-
+	const location = useLocation()
+	if (location.pathname === '/#') {
+		window.location.replace('/getImages');
+	}
 
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />}></Route>
-				<Route path="/" element={<FileImage />}></Route>
+				<Route path="/getImages" element={<EmailWall />} />
+				<Route path="/file" element={<FileImage />}></Route>
 			</Routes>
 		</>
 		// <div className="App">
