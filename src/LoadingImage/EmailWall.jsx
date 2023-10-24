@@ -15,7 +15,7 @@ const EmailWall = ({ user, getImages, images }) => {
 	}
 
 	async function uploadImage(e) {
-		let file = e.target.files[0];
+let file = e.target.files[0];
 
 		const { data, error } = await supabase
 			.storage
@@ -71,3 +71,4 @@ const EmailWall = ({ user, getImages, images }) => {
 }
 
 export default EmailWall
+
